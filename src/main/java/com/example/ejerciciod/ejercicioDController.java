@@ -56,24 +56,17 @@ public class ejercicioDController {
     @FXML
     private void abrirVentanaAgregar(ActionEvent actionEvent) {
         try {
-            // Cargar el archivo FXML de la ventana modal
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ejercicioDmodal.fxml"));
             Parent modalRoot = loader.load();
-
-            // Crear una nueva ventana (Stage) para la ventana modal
             Stage modalStage = new Stage();
-            modalStage.setTitle("Agregar Persona");
+            modalStage.setTitle("Nueva Persona");
             modalStage.setScene(new Scene(modalRoot));
-
-            // Establecer la ventana como modal
             modalStage.initModality(Modality.WINDOW_MODAL);
             modalStage.initOwner(agregarButton.getScene().getWindow());
-
-            // Obtener el controlador de la ventana modal para pasarle la lista de personas
             ejercicioDModalController modalController = loader.getController();
             modalController.setPersonasList(personasList);
-
-            // Mostrar la ventana modal y esperar hasta que se cierre
+            modalStage.setResizable(false);
             modalStage.showAndWait();
 
         } catch (Exception e) {

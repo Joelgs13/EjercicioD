@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 import model.Persona;
 
 /**
- * Controlador para la ventana modal que permite agregar una nueva persona. (y futuramente mas funciones)
+ * Controlador para la ventana modal que permite agregar una nueva persona. (y futuramente más funciones)
  */
 public class ejercicioDModalController {
 
@@ -35,15 +35,18 @@ public class ejercicioDModalController {
     }
 
     /**
-     * Agrega una nueva persona a la lista de personas y cierra la ventana modal.
+     * Método para agregar una nueva persona a la lista de la ventana principal.
+     * Realiza la validación de los datos, muestra errores si los hay y agrega la persona si todo es correcto.
      */
     @FXML
-    private void agregarPersona() {
+    private void aniadirPersona() {
+        // Obtener los valores ingresados por el usuario
         String nombre = nombreField.getText().trim();
         String apellidos = apellidosField.getText().trim();
         String edadText = edadField.getText().trim();
-        StringBuilder errores = new StringBuilder();
+        StringBuilder errores = new StringBuilder();  // Acumulador de errores
 
+        // Validaciones
         if (nombre.isEmpty()) {
             errores.append("El campo 'Nombre' no puede estar vacío.\n");
         }
@@ -61,26 +64,30 @@ public class ejercicioDModalController {
             errores.append("El campo 'Edad' debe ser un número entero válido.\n");
         }
 
+        // Mostrar errores si hay alguno
         if (errores.length() > 0) {
             mostrarError(errores.toString());
-            return;
+            return;  // No continuar si hay errores
         }
 
+        // Crear una nueva persona
         Persona nuevaPersona = new Persona(nombre, apellidos, edad);
 
-        // Verificar que la persona no sea duplicada
+        // Verificar si la persona ya existe en la lista
         for (Persona persona : personasList) {
             if (persona.equals(nuevaPersona)) {
                 mostrarError("Persona duplicada: Ya existe una persona con los mismos datos.");
-                return;
+                return;  // No continuar si ya existe una persona con los mismos datos
             }
         }
 
-        // Agregar la nueva persona
+        // Si todo es correcto, agregar la nueva persona a la lista
         personasList.add(nuevaPersona);
 
-        // Cerrar la ventana modal
-        cerrarVentana();
+        // Mostrar mensaje de éxito
+        mostrarInformacion("Persona agregada con éxito.");
+
+        // No cerrar la ventana aquí, la ventana solo se cierra con el botón "Cancelar"
     }
 
     /**
@@ -97,6 +104,19 @@ public class ejercicioDModalController {
     }
 
     /**
+     * Muestra un mensaje informativo en una alerta emergente.
+     *
+     * @param mensaje Mensaje informativo a mostrar.
+     */
+    private void mostrarInformacion(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Éxito");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+
+    /**
      * Cierra la ventana modal.
      */
     @FXML
@@ -105,3 +125,4 @@ public class ejercicioDModalController {
         stage.close();
     }
 }
+
