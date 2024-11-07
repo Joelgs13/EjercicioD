@@ -11,17 +11,30 @@ import model.Persona;
  */
 public class ejercicioDModalController {
 
+    /**
+     * El campo de texto que permite al usuario ingresar el nombre de una persona.
+     */
     @FXML
     private TextField nombreField;
 
+    /**
+     * El campo de texto que permite al usuario ingresar los apellidos de una persona.
+     */
     @FXML
     private TextField apellidosField;
 
+    /**
+     * El campo de texto que permite al usuario ingresar la edad de una persona.
+     */
     @FXML
     private TextField edadField;
 
+    /**
+     * El botón que permite agregar una nueva persona a la lista.
+     */
     @FXML
     private Button agregarButton;
+
 
     private ObservableList<Persona> personasList;
 
@@ -35,8 +48,8 @@ public class ejercicioDModalController {
     }
 
     /**
-     * Método para agregar una nueva persona a la lista de la ventana principal.
-     * Realiza la validación de los datos, muestra errores si los hay y agrega la persona si todo es correcto.
+     * Metodo para agregar una nueva persona a la lista de la ventana principal.
+     * Realiza la validación de los datos, muestra errores si los hay y agrega la persona si ttodo es correcto.
      */
     @FXML
     private void aniadirPersona() {
@@ -81,7 +94,7 @@ public class ejercicioDModalController {
             }
         }
 
-        // Si todo es correcto, agregar la nueva persona a la lista
+        // Si ttodo es correcto, agregar la nueva persona a la lista
         personasList.add(nuevaPersona);
 
         // Mostrar mensaje de éxito

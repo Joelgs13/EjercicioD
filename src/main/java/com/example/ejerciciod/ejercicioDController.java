@@ -18,20 +18,37 @@ import model.Persona;
  */
 public class ejercicioDController {
 
+    /**
+     * El botón que permite agregar una nueva persona a la lista.
+     */
     @FXML
     private Button agregarButton;
 
+    /**
+     * La tabla que muestra las personas en la interfaz de usuario.
+     */
     @FXML
     private TableView<Persona> personTable;
 
+    /**
+     * La columna que muestra el nombre de cada persona en la tabla.
+     */
     @FXML
     private TableColumn<Persona, String> nombreColumn;
 
+    /**
+     * La columna que muestra los apellidos de cada persona en la tabla.
+     */
     @FXML
     private TableColumn<Persona, String> apellidosColumn;
 
+    /**
+     * La columna que muestra la edad de cada persona en la tabla.
+     */
     @FXML
     private TableColumn<Persona, Integer> edadColumn;
+
+
 
     private ObservableList<Persona> personasList = FXCollections.observableArrayList();
 
