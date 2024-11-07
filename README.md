@@ -1,0 +1,1 @@
+a comparacion con la aplicacion anterior se han eliminado por el momento la posibilidad de poder editar u eliminar registros, solo se puede añadir ahora y se hace de una mejor forma en una ventana modal.
